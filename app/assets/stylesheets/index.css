@@ -1,0 +1,118 @@
+html, body, h1, h2, h3, h4, ul, ol, li, p, a {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.rectangle {
+  width: 357px;
+  height: 764px;
+  background-color: #ffffff;
+  background-image: url("");
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  float: left;
+}
+
+#TARGET {
+  width: 93px;
+  height: 27px;
+  font-family: OpenSans;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-align: left;
+  color: #000000;
+  color: var(--black);
+  margin: auto;
+}
+
+.Page-1-Copy-2 {
+    width: 83px;
+    height: 83px;
+    object-fit: contain;
+    background-color: #000000;
+    background-color: var(--black);
+    position:absolute;
+    margin-left: -110px;
+    margin-top: 39px;
+}
+
+.style_image  {
+    margin-left: 119px;
+    margin-right: auto;
+    position:absolute; /* and this has to be relative */
+    width: 125px;
+    height: 124px;
+    object-fit: contain;
+}
+.smilies {
+  width: 48px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+}
+#createfirsttarget {
+  width: 292px;
+  height: 67px;
+  font-family: OpenSans;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.78;
+  text-align: center;
+  color: #212121;
+  color: var(--black-two);
+  margin-top: 268px;
+}
+#Psss-these-are-the {
+  width: 321px;
+  height: 67px;
+  font-family: OpenSans;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 2.13;
+  text-align: center;
+  color: #212121;
+  color: var(--black-two);
+  margin-top: 30px;
+}
+.Football {
+  width: 99.8px;
+  height: 18px;
+  font-family: OpenSans;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #000000;
+  color: var(--black);
+}
+.Travel {
+  width: 99.8px;
+  height: 18px;
+  font-family: OpenSans;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #000000;
+  color: var(--black);
+}
+.Music {
+  width: 99.8px;
+  height: 18px;
+  font-family: OpenSans;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #000000;
+  color: var(--black);
+}
+.MusicImage {
+  width: 20.1px;
+  height: 19.5px;
+  background-color: #000000;
+  background-color: var(--black);
+  object-fit: contain;
+  display: inline-block;
+}

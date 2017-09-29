@@ -1,0 +1,17 @@
+<h1>Listing targets</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Topic</th>
+    <th>Area</th>
+  </tr>
+
+  <% @targets.each do |target| %>
+    <tr>
+      <td><%= target.title %></td>
+      <td><%= target.topic %></td>
+      <td><%= link_to 'Show', target_path(target) %></td>
+    </tr>
+  <% end %>
+</table>

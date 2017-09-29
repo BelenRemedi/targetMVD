@@ -1,0 +1,32 @@
+<div class= "rectangle2">
+<h2 id="CREATE-TARGET">CREATE TARGET</h2>
+<%= form_with scope: :target, url: targets_path do |form| %>
+  <%= form.hidden_field :topic_id, {id: "topic_id"} %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+
+  <p>
+    <%= form.label :area %><br>
+    <%= form.text_field :area %>
+
+  </p>
+  <table>
+  <% @topics.each do |topic| %>
+    <tr>
+      <td>
+        <span class="topic" data-topic-id=<%= topic.id %>>
+          <i><%= image_tag("#{topic.id}.png")  %></i>
+          <%= topic.name %>
+        </span>
+      </td>
+    </tr>
+  <% end %>
+</table>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+</div>
