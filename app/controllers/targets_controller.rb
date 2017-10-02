@@ -8,9 +8,6 @@ class TargetsController < ApplicationController
   end
 
   def new
-    #lat = params[:lat]
-
-    #@target = Target.new(lat:lat)
     @topics = Topic.all
   end
 
@@ -27,8 +24,6 @@ class TargetsController < ApplicationController
     @radius = target_params[:area]
     @topic = target_params[:topic_id]
 
-    puts "target_params______"+target_params.to_json
-
     respond_to do |format|
       if @target.save
         format.js
@@ -41,7 +36,6 @@ class TargetsController < ApplicationController
   def load_create_target
     @topics = Topic.all
     @target = Target.new
-    puts "tager______"+@target.to_json
     render json: { form: (render_to_string partial: 'create_target') }
   end
   def list
