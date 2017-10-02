@@ -2,6 +2,8 @@
 <h2 id="CREATE-TARGET">CREATE TARGET</h2>
 <%= form_with scope: :target, url: targets_path do |form| %>
   <%= form.hidden_field :topic_id, {id: "topic_id"} %>
+  <%= form.hidden_field :latitud, {id: "latitude"} %>
+  <%= form.hidden_field :longitud, {id: "longitude"} %>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>

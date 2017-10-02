@@ -44,8 +44,13 @@ class TargetsController < ApplicationController
     puts "tager______"+@target.to_json
     render json: { form: (render_to_string partial: 'create_target') }
   end
+  def list
+    @targets= Target.all
+    render :json => @targets
+  end
+
   private
   def target_params
-    params.require(:target).permit(:title, :topic, :area, :topic_id)
+    params.require(:target).permit(:title, :topic, :area, :topic_id, :latitud, :longitud)
   end
 end

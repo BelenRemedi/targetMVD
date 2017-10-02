@@ -3,13 +3,12 @@ $(document).ready(function(){
 })
 
   var map, infoWindow;
-  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var labelIndex = 0;
   var markers = [];
   var savedmarkers= [];
   var firstmarker= true;
   var topic= '<%=image_url('0.png')%>';
   function initMap() {
+
     infoWindow = new google.maps.InfoWindow;
 
       // Try HTML5 geolocation.
@@ -35,16 +34,16 @@ $(document).ready(function(){
       zoom: 4,
       center: {lat: -34.397, lng: 150.644},
     });
-    /*var marker = new google.maps.Marker({
-      position: uluru,
-      map: map
-    });*/
-
+    //setMarkers(map);
+    load_user_targets();
     // This event listener calls addMarker() when the map is clicked.
     google.maps.event.addListener(map, 'click', function(event) {
       $.getJSON('/targets/load_create_target', function(data) {
-        console.log('data',data.form)
+        console.log('data',data.form);
+        console.log('event',event.latLng.lat());
         $(".rectangle").html(data.form);
+        $('#latitude').val(event.latLng.lat());
+        $('#longitude').val(event.latLng.lng());
         $(".topic").click(function() {
           console.log('data', $(this).data('topicId'));
           $('#topic_id').val( $(this).data('topicId'));
@@ -55,10 +54,18 @@ $(document).ready(function(){
         markers.pop();
       }
       firstmarker= false;
+      topic= '<%=image_url('0.png')%>';
       addMarker(event.latLng, map,topic);
+      console.log("----------12222");
+
       //window.location.replace('http://localhost:3000/targets/new');
     });
   }
+  /*function setMarkers(map){
+    for (var i = 0; i < savedmarkers.length; i++) {
+        savedmarkers[i].setMap(map);
+    }
+  }*/
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
@@ -73,7 +80,7 @@ $(document).ready(function(){
     // Add the marker at the clicked location, and add the next-available label
     // from the array of alphabetical characters.
     //var image = '/assets/images/marker.png'
-    function createImage(url){
+    /*function createImage(url){
         var image = {
           url: url,
           // This marker is 32 pixels wide by 32 pixels tall.
@@ -84,7 +91,7 @@ $(document).ready(function(){
           anchor: new google.maps.Point(0, 32)
         };
         return image;
-      }
+      }*/
 
     var marker = new google.maps.Marker({
       position: location,
@@ -94,13 +101,19 @@ $(document).ready(function(){
       icon: topic,
       draggable:true
     });
-    markers.push(marker);
+    if (topic == '<%=image_url('0.png')%>'){
+      markers.push(marker);
+    }else{
+      savedmarkers.push(marker);
+    }
     map.panTo(location);
   }
 
-  function addCircles(radius,topic){
+  function addCircles(radius,localtopic){
     markers[0].setMap(null);
-    var center= markers.pop().getPosition();
+    //savedmarkers.push(markers[0]);
+    var center= markers[0].getPosition();
+    topic= localtopic;
     addMarker(center, map,topic);
 
     var cityCircle = new google.maps.Circle({
@@ -115,9 +128,34 @@ $(document).ready(function(){
     });
 
   }
+  function load_user_targets() {
+  $.getJSON('/targets/list', function(targetsList) {
+    jQuery.each(targetsList, function(index, target){
+
+      var latitude= parseFloat(target.latitud);
+      var longitude= parseFloat(target.longitud);
+      var location = {lat: latitude, lng: longitude};
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        icon: "/assets/"+target.topic_id+".png",
+        draggable:true
+      });
+      var cityCircle = new google.maps.Circle({
+        strokeColor: '#FDBD39',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FFCB03',
+        fillOpacity: 0.35,
+        map: map,
+        center: location,
+        radius: target.area
+      });
+    });
+  });
+}
 
   // google.maps.event.addDomListener(window, 'load', initialize);
  /*function setIcon(icon) {
-   var url = '<% image_url('marker.png') %>';
-   return url+'.png' || 'default.png';
+   return assetPath+icon+'.png';
  }*/
