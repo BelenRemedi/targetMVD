@@ -1,0 +1,92 @@
+.rectangle {
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  float: left;
+  margin: 0 auto 0 auto;
+}
+.rectangle-profile {
+  width: 120px;
+  height:250px;
+  border-bottom: 0.5px   solid   black;
+  margin: 0 auto 0 auto;
+  z-index: -1;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+}
+#target {
+  width: 93px;
+  height: 27px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-align: left;
+  color: #000000;
+  color: var(--black);
+  margin: auto;
+}
+
+.over-logo-img {
+    width: 83px;
+    height: 83px;
+    background-color: #000000;
+    background-color: var(--black);
+    position:absolute;
+    z-index: 2;
+    margin-top: 20px;
+    margin-left: 19px;
+}
+
+.under-logo-img {
+    width: 125px;
+    height: 124px;
+    position:absolute;
+    z-index: 1;
+    margin: 0 auto 0 auto;
+}
+.smilies {
+  width: 48px;
+  height: 28px;
+  display: block;
+  margin: 100px auto 0 auto;
+}
+#create-first-target {
+  width: 292px;
+  height: 67px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.78;
+  text-align: center;
+  color: #212121;
+  color: var(--black-two);
+  margin-top: 72px;
+}
+#Psss-these-are-the {
+  width: 321px;
+  height: 67px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 2.13;
+  text-align: center;
+  color: #212121;
+  color: var(--black-two);
+  margin-top: 30px;
+}
+.topic-image {
+  width: 20.1px;
+  height: 19.5px;
+  background-color: #000000;
+  background-color: var(--black);
+  object-fit: contain;
+  display: inline-block;
+}
+.list-topics li {
+  padding-left: 100px;
+  margin-top: 10px;
+}
