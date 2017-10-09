@@ -1,0 +1,63 @@
+// Place all the styles related to the Targets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#create-target {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #2fbcf7;
+}
+.target {
+  display: block;
+  margin: 0 auto 0 auto;
+}
+.field {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #000000;
+}
+.centered{
+  text-align: center;
+}
+.form-create-target{
+  margin: 20px 30px auto 30px;
+  display: inline-block;
+}
+table , td{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.label {
+  font-size: 11px;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #000000;
+}
+.button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-left: 28px;
+    margin-top: 10px;
+}
+.submit:hover{
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.topic {
+  cursor: pointer;
+}
+
+.topic:hover {
+  background-color: grey;
+}
