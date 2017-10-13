@@ -9,34 +9,17 @@
   text-align: center;
   background-color: #2fbcf7;
 }
-.target {
-  display: block;
-  margin: 0 auto 0 auto;
-}
-.field {
-  text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 0.7px;
-  text-align: left;
-  color: #000000;
-}
-.centered{
-  text-align: center;
-}
+
 .form-create-target{
   margin: 20px 30px auto 30px;
   display: inline-block;
 }
+
 table , td{
   border: 1px solid black;
   border-collapse: collapse;
 }
-.label {
-  font-size: 11px;
-  letter-spacing: 0.7px;
-  text-align: left;
-  color: #000000;
-}
+
 .button {
     background-color: black;
     border: none;
@@ -50,8 +33,10 @@ table , td{
     margin-left: 28px;
     margin-top: 10px;
 }
-.submit:hover{
-   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+.target-img{
+  display: block;
+  margin: 0 auto 0 auto;
 }
 
 .topic {
