@@ -1,0 +1,51 @@
+<div class= "rectangle-menu-open">
+    <%= image_tag 'smilies-login', :class => "smilies-login"%>
+    <h1 class="first-title position-auto">TARGET MVD</h1>
+    <h2 class="second-title position-centered">Find people near you & Connect</h2>
+    <p class="third-title position-centered"> Create a  target  wherever on the map, specify your interest: Travel, Dating, Music, etc and start conecting with others who share your interest.</p>
+
+    <div id="login-box">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-login"} ) do |f|%>
+      <div>
+        <%= f.label :email,class: :field %><br />
+        <%= f.email_field :email, autofocus: true , class: :"field-position"%>
+      </div>
+
+      <div>
+        <%= f.label :password,class: :field%><br />
+        <%= f.password_field :password, autocomplete: "off", class: :"field-position" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+        <% end -%>
+
+        <div class="actions">
+            <%= f.submit "SIGN IN", class: :"button-login field-position submit"%>
+        </div>
+      <% end %>
+    </div>
+    <div id="recovery-box">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: :"field-position"%>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions" %>
+        </div>
+      <% end %>
+      <a class="login-link" id="sign-in-button" href="#"> SIGN IN </a>
+    </div>
+
+    <div class="link-login-div">
+      <%= render "devise/shared/links" %>
+    </div>
+</div>
+<%= render "devise/shared/app_img_div" %>

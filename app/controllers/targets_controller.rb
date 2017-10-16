@@ -25,7 +25,7 @@ class TargetsController < ApplicationController
     @topic = target_params[:topic_id]
 
     respond_to do |format|
-      if @target.save
+      if @target = current_user.targets.create(target_params)
         format.js
       else
         format.html { render action: "new" }
@@ -39,7 +39,7 @@ class TargetsController < ApplicationController
     render json: { form: (render_to_string partial: 'create_target') }
   end
   def list
-    @targets= Target.all
+    @targets= current_user.targets
     render :json => @targets
   end
 

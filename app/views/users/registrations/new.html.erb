@@ -1,0 +1,46 @@
+<div class= "rectangle-menu-open">
+    <h1 class= "first-title sign-up">SIGN UP</h1>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-login"} ) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :name ,class: :field%><br />
+      <%= f.text_field :name, autofocus: true , class: :"field-position"%>
+    </div>
+    <div class="field">
+      <%= f.label :gender ,class: :field%><br />
+      <%= f.select(:gender) do %>
+        <% [['Female', 'female'], ['Male', 'male']].each do |c| -%>
+          <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= f.label :email ,class: :field%><br />
+      <%= f.email_field :email, autofocus: true , class: :"field-position"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :password,class: :field %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" , class: :"field-position"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation,"confirm password" ,class: :field%><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" , class: :"field-position"%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: :"button-login field-position submit" %>
+    </div>
+    <% end %>
+
+    <div class="link-login-div">
+      <%= render "devise/shared/links" %>
+    </div>
+</div>
+<%= render "devise/shared/app_img_div" %>
