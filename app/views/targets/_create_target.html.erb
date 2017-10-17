@@ -2,6 +2,9 @@
   <%= image_tag 'target-img', :class => "target-img"%>
   <h3 class="field text-centered">CREATE NEW TARGET</h3>
   <%= form_with class: "form-create-target", scope: :target, url: targets_path do |form| %>
+    <div id="error_explanation">
+      <ul class="error-list"></ul>
+    </div>
     <%= form.hidden_field :topic_id, {id: "topic_id"} %>
     <%= form.hidden_field :latitud, {id: "latitude"} %>
     <%= form.hidden_field :longitud, {id: "longitude"} %>

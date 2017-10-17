@@ -1,1 +1,7 @@
-addCircles(<%=@radius %>,"<%=image_url(@topic)%>");
+<%if @target.errors.empty? %>
+  addCircles(<%=@radius %>,"<%=image_url(@topic)%>");
+<%else%>
+  <% @target.errors.each do |key, value| %>
+    $('.error-list').append('<li><%= "#{key} #{value}"%></li>')
+  <%end%>
+<%end%>
