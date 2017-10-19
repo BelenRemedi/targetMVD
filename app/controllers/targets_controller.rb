@@ -28,7 +28,6 @@ class TargetsController < ApplicationController
       if @target.save
         format.js
       else
-        puts "@target.errors"+@target.errors.to_json
         format.js
       end
     end
