@@ -6,6 +6,8 @@
 
     <div id="login-box">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-login"} ) do |f|%>
+      <%= devise_error_messages! %>
+
       <div>
         <%= f.label :email,class: :field %><br />
         <%= f.email_field :email, autofocus: true , class: :"field-position"%>

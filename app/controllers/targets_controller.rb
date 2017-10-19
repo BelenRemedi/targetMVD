@@ -20,15 +20,15 @@ class TargetsController < ApplicationController
   end
 
   def create
-    @target = Target.new(target_params)
+    @target = current_user.targets.new(target_params)
     @radius = target_params[:area]
     @topic = target_params[:topic_id]
 
     respond_to do |format|
-      if @target = current_user.targets.create(target_params)
+      if @target.save
         format.js
       else
-        format.html { render action: "new" }
+        format.js
       end
     end
   end
