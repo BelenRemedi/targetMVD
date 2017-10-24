@@ -16,11 +16,11 @@ class TargetsController < ApplicationController
 
   def update
   end
+
   def destroy
     @target = Target.find(params[:id])
     @target.destroy!
-    flash[:notice] = "Target successfully deleted"
-    redirect_to root_path
+    redirect_to root_path, notice: "Target successfully deleted!"
   end
 
   def create
@@ -43,11 +43,13 @@ class TargetsController < ApplicationController
     @target = Target.new
     render json: { form: (render_to_string partial: 'create_target') }
   end
+
   def load_delete_target
     target_id = params[:target_id]
     @target = Target.find(target_id)
     render json: { target: (render_to_string partial: 'delete_target') }
   end
+
   def list
     @targets= current_user.targets
     render :json => @targets

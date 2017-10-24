@@ -1,9 +1,9 @@
 var map, infoWindow;
 var markers = [];
-var markerstodelete = [];
-var firstmarker= true;
-var deletemarker = false;
-var topic= '<%=image_url('0.png')%>';
+var markersToDelete = [];
+var firstMarker = true;
+var deleteMarker = false;
+var topic = '<%=image_url('0.png')%>';
 
 function initMap() {
   infoWindow = new google.maps.InfoWindow;
@@ -13,15 +13,15 @@ function initMap() {
   // HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    };
-    infoWindow.setPosition(pos);
-    infoWindow.setContent('Location found.');
-    infoWindow.open(map);
-    map.setCenter(pos);
-    map.setZoom(16);
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+      map.setZoom(16);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -29,29 +29,29 @@ function initMap() {
   // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
   }
-  load_user_targets();
+  loadUserTargets();
   // This event listener calls addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     $.getJSON('/targets/load_create_target', function(data) {
-      $(".rectangle").html(data.form);
+      $('.rectangle').html(data.form);
       $('#latitude').val(event.latLng.lat());
       $('#longitude').val(event.latLng.lng());
-      $(".topic").click(function() {
+      $('.topic').click(function() {
         $('#topic_id').val( $(this).data('topicId'));
       });
     });
-    if (!firstmarker){
+    if (!firstMarker){
       markers[0].setMap(null);
       markers.pop();
     }
-    firstmarker= false;
-    topic= '<%=image_url('0.png')%>';
-    addMarker(event.latLng, map,topic);
-    var markertodelete= markerstodelete.pop();
-    if (markertodelete!=null) {
-      markertodelete.cityCircle.setMap(null);
-      var markertodeletearea= markertodelete.cityCircle.radius;
-      addCircleToaMarker(markertodelete, markertodeletearea, markertodelete.position,'#FDBD39','#FFCB03');
+    firstMarker = false;
+    topic = '<%=image_url('0.png')%>';
+    addMarker(event.latLng, map, topic);
+    var markerToDelete = markersToDelete.pop();
+    if (markerToDelete != null) {
+      markerToDelete.cityCircle.setMap(null);
+      var markerToDeleteArea = markerToDelete.cityCircle.radius;
+      addCircleToaMarker(markerToDelete, markerToDeleteArea, markerToDelete.position, '#FDBD39', '#FFCB03');
     }
   });
 }
@@ -70,7 +70,7 @@ function addMarker(location, map, topic) {
     position: location,
     map: map,
     icon: topic,
-    draggable:true
+    draggable: true
   });
   if (topic == '<%=image_url('0.png')%>'){
     markers.push(marker);
@@ -78,58 +78,57 @@ function addMarker(location, map, topic) {
   map.panTo(location);
 }
 
-function addCircles(radius,localtopic, target_id) {
+function addCircles(radius, localtopic, target_id) {
   markers[0].setMap(null);
-  var center= markers[0].getPosition();
-  topic= localtopic;
-  //addMarker(center, map,topic);
+  var center = markers[0].getPosition();
+  topic = localtopic;
   var marker = new google.maps.Marker({
     position: center,
     map: map,
     icon: topic,
-    draggable:true,
+    draggable: true,
     targetId: target_id
   });
-  addCircleToaMarker(marker, radius, center,'#FDBD39','#FFCB03');
-  addMarkerListener(marker,radius,center);
+  addCircleToaMarker(marker, radius, center, '#FDBD39', '#FFCB03');
+  addMarkerListener(marker, radius, center);
 }
 
-function load_user_targets() {
+function loadUserTargets() {
   $.getJSON('/targets/list', function(targetsList) {
     jQuery.each(targetsList, function(index, target){
-      var latitude= parseFloat(target.latitud);
-      var longitude= parseFloat(target.longitud);
+      var latitude = parseFloat(target.latitud);
+      var longitude = parseFloat(target.longitud);
       var location = {lat: latitude, lng: longitude};
       var marker = new google.maps.Marker({
         position: location,
         map: map,
         icon: "/assets/"+target.topic_id+".png",
-        draggable:true,
+        draggable: true,
         targetId: target.id
       });
-      addCircleToaMarker(marker, target.area, location,'#FDBD39','#FFCB03');
-      addMarkerListener(marker,target.area,location);
+      addCircleToaMarker(marker, target.area, location, '#FDBD39', '#FFCB03');
+      addMarkerListener(marker, target.area, location);
     });
   });
 }
 
 function addMarkerListener(marker, area, location) {
   marker.addListener('click', function() {
-    $.getJSON('/targets/load_delete_target', { target_id: marker.targetId} )
+    $.getJSON('/targets/load_delete_target', { target_id: marker.targetId })
       .done(function( data ) {
         $(".rectangle").html(data.target);
         marker.cityCircle.setMap(null);
-        var markertodelete= markerstodelete.pop();
-        if (markertodelete!=null){
-          if (markertodelete!=marker){
-            markertodelete.cityCircle.setMap(null);
-            var markertodeletearea= markertodelete.cityCircle.radius;
-            addCircleToaMarker(markertodelete, markertodeletearea,markertodelete.position,'#FDBD39','#FFCB03')
+        var markerToDelete = markersToDelete.pop();
+        if (markerToDelete != null){
+          if (markerToDelete != marker){
+            markerToDelete.cityCircle.setMap(null);
+            var markerToDeleteArea = markerToDelete.cityCircle.radius;
+            addCircleToaMarker(markerToDelete, markerToDeleteArea, markerToDelete.position, '#FDBD39', '#FFCB03')
           }
         }
-        addCircleToaMarker(marker, area, location,'#30bcf8','#30bcf8');
-        markerstodelete.push(marker);
-        deletemarker= true;
+        addCircleToaMarker(marker, area, location, '#30bcf8', '#30bcf8');
+        markersToDelete.push(marker);
+        deleteMarker = true;
       })
       .fail(function( jqxhr, textStatus, error ) {
         var err = textStatus + ", " + error;
@@ -138,7 +137,7 @@ function addMarkerListener(marker, area, location) {
  });
 }
 
-function addCircleToaMarker(marker, area, location,color,fillColor) {
+function addCircleToaMarker(marker, area, location, color, fillColor) {
   marker.cityCircle = new google.maps.Circle({
       strokeColor: color,
       strokeOpacity: 0.8,
