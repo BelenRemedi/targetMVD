@@ -17,12 +17,17 @@ class TargetsController < ApplicationController
   def update
   end
   def destroy
+    @target = Target.find(params[:id])
+    @target.destroy!
+    flash[:notice] = "Target successfully deleted"
+    redirect_to root_path
   end
 
   def create
     @target = current_user.targets.new(target_params)
     @radius = target_params[:area]
     @topic = target_params[:topic_id]
+    @target_id = target_params[:id]
 
     respond_to do |format|
       if @target.save
@@ -38,6 +43,11 @@ class TargetsController < ApplicationController
     @target = Target.new
     render json: { form: (render_to_string partial: 'create_target') }
   end
+  def load_delete_target
+    target_id = params[:target_id]
+    @target = Target.find(target_id)
+    render json: { target: (render_to_string partial: 'delete_target') }
+  end
   def list
     @targets= current_user.targets
     render :json => @targets
@@ -45,6 +55,6 @@ class TargetsController < ApplicationController
 
   private
   def target_params
-    params.require(:target).permit(:title, :topic, :area, :topic_id, :latitud, :longitud)
+    params.require(:target).permit(:id, :title, :topic, :area, :topic_id, :latitud, :longitud)
   end
 end

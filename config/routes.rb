@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations', sessions: 'users/sessions'}
   get 'welcome/index'
   get '/targets/load_create_target' => 'targets#load_create_target', as: :load_create_target
+  get '/targets/load_delete_target' => 'targets#load_delete_target', as: :load_delete_target
   get '/targets/list' => 'targets#list', as: :list
   # get '/users/registrations/confirmation_page' => 'users/registrations#confirmation_page', as: :confirmation_page
   as :user do

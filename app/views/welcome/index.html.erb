@@ -1,10 +1,13 @@
 <% content_for :head do %>
-<script async defer
+<script async
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1aLc10D-T1IE1GoRDvzaqutJ0giRW_fI&callback=initMap">
 </script>
 <% end %>
 <div class= "rectangle">
     <i class="fa fa-bars" style="fwidth: 20.3px; height: 13.5px; background-color: #000000;background-color: var(--black);"></i>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <div class= "rectangle-profile">
       <h2 class="first-title position-auto">TARGET</h2>
       <div class= "profile-logo">
