@@ -19,8 +19,15 @@ class TargetsController < ApplicationController
 
   def destroy
     @target = Target.find(params[:id])
-    @target.destroy!
-    redirect_to root_path, notice: "Target successfully deleted!"
+    respond_to do |format|
+      if @target.destroy
+        format.js { flash[:notice] = "Target successfully deleted!"
+                    render action: 'redirect.js.erb'
+                  }
+      else
+        format.js {  flash[:error] = "Action failed" }
+      end
+    end
   end
 
   def create
@@ -39,15 +46,14 @@ class TargetsController < ApplicationController
   end
 
   def load_create_target
-    @topics = Topic.all
-    @target = Target.new
-    render json: { form: (render_to_string partial: 'create_target') }
+    topics = Topic.all
+    Target.new
+    render json: { form: (render_to_string partial: 'create_target', locals: {topics: topics}) }
   end
 
   def load_delete_target
-    target_id = params[:target_id]
-    @target = Target.find(target_id)
-    render json: { target: (render_to_string partial: 'delete_target') }
+    target = Target.find(params[:target_id])
+    render json: { target: (render_to_string partial: 'delete_target', locals: {target: target}) }
   end
 
   def list

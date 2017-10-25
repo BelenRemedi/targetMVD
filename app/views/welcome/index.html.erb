@@ -5,8 +5,8 @@
 <% end %>
 <div class= "rectangle">
     <i class="fa fa-bars" style="fwidth: 20.3px; height: 13.5px; background-color: #000000;background-color: var(--black);"></i>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% if flash[:notice] %>
+      <div class="alert alert-notice"><%= flash[:notice] %></div>
     <% end %>
     <div class= "rectangle-profile">
       <h2 class="first-title position-auto">TARGET</h2>
