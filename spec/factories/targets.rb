@@ -1,6 +1,5 @@
 # This will guess the User class
 FactoryGirl.define do
-
   factory :target do
     title 'newtarget'
     area  1000

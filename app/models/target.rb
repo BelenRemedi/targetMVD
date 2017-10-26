@@ -9,6 +9,6 @@ class Target < ApplicationRecord
   validate :max_targets
 
   def max_targets
-    errors.add(:targets, "maximum 10 targets") if self.user.targets.count >= 10
+    errors.add(:targets, 'maximum 10 targets') if user.targets.count >= 10
   end
 end
