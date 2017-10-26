@@ -18,10 +18,9 @@
     <p>
       <%= form.label :target_topic ,class: :field%><br>
       <div class= "topic-field position-centered">
-        <%= target.topic.name%>
+        <%= target.topic_name%>
       </div>
     </p>
-
     <p>
     <%= link_to 'Delete', target_path(target), method: :delete, remote:true %>
     </p>

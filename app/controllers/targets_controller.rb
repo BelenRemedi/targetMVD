@@ -21,7 +21,7 @@ class TargetsController < ApplicationController
       if @target.destroy
         format.js do
           flash[:notice] = 'Target successfully deleted!'
-          render action: 'redirect.js.erb'
+          render :'redirect.js.erb'
         end
       else
         format.js { flash[:error] = 'Action failed' }
