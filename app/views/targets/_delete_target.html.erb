@@ -1,0 +1,29 @@
+<h2 id="create-target">TARGET</h2>
+  <%= image_tag 'target-img', :class => 'target-img'%>
+  <h3 class="field text-centered">DELETE TARGET</h3>
+  <div class="delete-error"></div>
+  <%= form_with class: "form-delete-target", scope: :target do |form| %>
+    <p>
+      <%= form.label :area_lenght,class: :field%><br>
+      <div class= "topic-field position-centered">
+        <%= target.area %>
+      </div>
+    </p>
+    <p>
+      <%= form.label :target_title ,class: :field%><br>
+      <div class= "topic-field position-centered">
+        <%= target.title %>
+      </div>
+    </p>
+    <p>
+      <%= form.label :target_topic ,class: :field%><br>
+      <div class= "topic-field position-centered">
+        <%= target.topic.name%>
+      </div>
+    </p>
+
+    <p>
+    <%= link_to 'Delete', target_path(target), method: :delete, remote:true %>
+    </p>
+<% end %>
+<%= image_tag 'smilies', :class => "smilies"%>

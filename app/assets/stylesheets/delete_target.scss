@@ -1,0 +1,18 @@
+@import "variables";
+
+.form-delete-target{
+  margin: 125px 70px auto 70px;
+  display: inline-block;
+}
+
+.topic-field {
+  border: 0.5px solid black;
+}
+.delete-error {
+  margin: 0 auto;
+  color: $color-error ;
+  font-size: 15px;
+  background-color: $color-error-background;
+  border-color: black;
+  border-radius: 10px;
+}

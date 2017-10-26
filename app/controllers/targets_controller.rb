@@ -16,13 +16,25 @@ class TargetsController < ApplicationController
 
   def update
   end
+
   def destroy
+    @target = Target.find(params[:id])
+    respond_to do |format|
+      if @target.destroy
+        format.js { flash[:notice] = "Target successfully deleted!"
+                    render action: 'redirect.js.erb'
+                  }
+      else
+        format.js {  flash[:error] = "Action failed" }
+      end
+    end
   end
 
   def create
     @target = current_user.targets.new(target_params)
     @radius = target_params[:area]
     @topic = target_params[:topic_id]
+    @target_id = target_params[:id]
 
     respond_to do |format|
       if @target.save
@@ -34,10 +46,16 @@ class TargetsController < ApplicationController
   end
 
   def load_create_target
-    @topics = Topic.all
-    @target = Target.new
-    render json: { form: (render_to_string partial: 'create_target') }
+    topics = Topic.all
+    Target.new
+    render json: { form: (render_to_string partial: 'create_target', locals: {topics: topics}) }
   end
+
+  def load_delete_target
+    target = Target.find(params[:target_id])
+    render json: { target: (render_to_string partial: 'delete_target', locals: {target: target}) }
+  end
+
   def list
     @targets= current_user.targets
     render :json => @targets
@@ -45,6 +63,6 @@ class TargetsController < ApplicationController
 
   private
   def target_params
-    params.require(:target).permit(:title, :topic, :area, :topic_id, :latitud, :longitud)
+    params.require(:target).permit(:id, :title, :topic, :area, :topic_id, :latitud, :longitud)
   end
 end
