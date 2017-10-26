@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   as :user do
     get 'users/registrations/confirmation_page', to: 'users/registrations#confirmation_page'
   end
-  resources :users
+  resources :users, only: [:new]
   resources :targets do
     collection do
       get 'load_create_target'
