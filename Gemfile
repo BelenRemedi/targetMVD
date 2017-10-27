@@ -52,6 +52,7 @@ group :development do
   gem 'factory_girl_rails', '~> 4.8.0'
   gem 'rubocop', '~> 0.49.1'
   gem 'rails_best_practices', '~> 1.16.0'
+  gem 'reek', '~> 4.7.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
