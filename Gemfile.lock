@@ -59,6 +59,7 @@ GEM
       xpath (~> 2.0)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
+    cliver (0.3.2)
     code_analyzer (0.4.8)
       sexp_processor
     codeclimate-engine-rb (0.4.0)
@@ -73,6 +74,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    database_cleaner (1.6.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.3.0)
@@ -128,6 +130,11 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.21.0)
+    phantomjs (2.1.1.0)
+    poltergeist (1.16.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     public_suffix (3.0.0)
     puma (3.10.0)
@@ -269,12 +276,15 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  database_cleaner (~> 1.6.1)
   devise
   factory_girl_rails (~> 4.8.0)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
+  phantomjs (~> 2.1.1.0)
+  poltergeist (~> 1.16.0)
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails_best_practices (~> 1.16.0)
