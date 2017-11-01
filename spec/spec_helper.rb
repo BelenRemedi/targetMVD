@@ -13,26 +13,19 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-
+ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
-require 'phantomjs'
 require 'factory_girl_rails'
+require 'database_cleaner'
 
 FactoryGirl.factories.clear
 FactoryGirl.reload
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
-
-Capybara.javascript_driver = :poltergeist
-
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, phantomjs: Phantomjs.path)
-end
 
 RSpec.configure do |config|
   config.include Capybara::DSL
