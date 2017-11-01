@@ -1,4 +1,5 @@
 class TargetsController < ApplicationController
+  before_action :authenticate_user!
   helper_method :target
   helper_method :targets
 
