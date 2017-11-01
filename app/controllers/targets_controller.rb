@@ -1,11 +1,10 @@
 class TargetsController < ApplicationController
-  def index
-    @targets = Target.all
-  end
+  helper_method :target
+  helper_method :targets
 
-  def show
-    @target = Target.find(params[:id])
-  end
+  def index; end
+
+  def show; end
 
   def new
     @topics = Topic.all
@@ -16,12 +15,11 @@ class TargetsController < ApplicationController
   def update; end
 
   def destroy
-    @target = Target.find(params[:id])
     respond_to do |format|
-      if @target.destroy
+      if target.destroy
         format.js do
           flash[:notice] = 'Target successfully deleted!'
-          render action: 'redirect.js.erb'
+          render :'redirect.js.erb'
         end
       else
         format.js { flash[:error] = 'Action failed' }
@@ -30,13 +28,8 @@ class TargetsController < ApplicationController
   end
 
   def create
-    @target = current_user.targets.new(target_params)
-    @radius = target_params[:area]
-    @topic = target_params[:topic_id]
-    @target_id = target_params[:id]
-
     respond_to do |format|
-      @target.save
+      @target = current_user.targets.create(target_params)
       format.js
     end
   end
@@ -53,11 +46,18 @@ class TargetsController < ApplicationController
   end
 
   def list
-    @targets = current_user.targets
-    render json: @targets
+    render json: targets
   end
 
   private
+
+  def target
+    @target ||= Target.find(params[:id])
+  end
+
+  def targets
+    @targets ||= current_user.targets
+  end
 
   def target_params
     params.require(:target).permit(:id, :title, :topic, :area, :topic_id, :latitud, :longitud)

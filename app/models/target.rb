@@ -1,5 +1,6 @@
 class Target < ApplicationRecord
   belongs_to :topic
+  delegate :name, :id, to: :topic, prefix: true
   belongs_to :user
 
   validates :title, presence: true
