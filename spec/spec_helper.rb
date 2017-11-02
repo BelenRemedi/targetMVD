@@ -13,7 +13,57 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+ENV['RAILS_ENV'] = 'test'
+require File.expand_path('../../config/environment', __FILE__)
+
+require 'rspec/rails'
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'factory_girl_rails'
+require 'database_cleaner'
+
+FactoryGirl.factories.clear
+FactoryGirl.reload
+
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
 RSpec.configure do |config|
+  config.include Capybara::DSL
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    Warden.test_mode!
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature) do
+    # :rack_test driver's Rack app under test shares database connection
+    # with the specs, so we can use transaction strategy for speed.
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    if driver_shares_db_connection_with_specs
+      DatabaseCleaner.strategy = :transaction
+    else
+      # Non-:rack_test driver is probably a driver for a JavaScript browser
+      # with a Rack app under test that does *not* share a database
+      # connection with the specs, so we must use truncation strategy.
+      DatabaseCleaner.strategy = :truncation
+    end
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -43,6 +93,7 @@ RSpec.configure do |config|
   # inherited by the metadata hash of host groups and examples, rather than
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
