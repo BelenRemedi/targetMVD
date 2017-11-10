@@ -1,0 +1,18 @@
+.chat-table {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.chat-table th, .chat-table td {
+    border-bottom: 1px solid #ddd;
+}
+
+.chat-receiver {
+  cursor: pointer;
+}
+.chat-topic {
+  margin-left: 228px;
+}
+.chat-table tr:hover {
+  background-color: #FFFFE0;
+}

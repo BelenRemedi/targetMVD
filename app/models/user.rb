@@ -6,4 +6,6 @@ class User < ApplicationRecord
          :validatable, :confirmable
 
   has_many :targets
+  NAME_REGEX = /\w+/
+  has_many :chats
 end
