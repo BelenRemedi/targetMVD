@@ -4,6 +4,7 @@ $(document).ready(function(){
     $( "#login-box" ).hide();
     $( "#recovery-box" ).show();
     $(".link-login-div").hide();
+    $('.error-list').html("")
   });
   $("#sign-in-button").click(function(event) {
     event.preventDefault();
