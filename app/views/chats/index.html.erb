@@ -1,4 +1,5 @@
+<h2 id="create-target">CHAT</h2>
 <div class="message-wr">
-  <%= render 'messages' %>
-  <%= render 'message_form' %>
+  <%= render 'messages', messages: messages %>
+  <%= render 'message_form', message: message, chat: chat %>
 </div>

@@ -14,9 +14,13 @@ Rails.application.routes.draw do
       get 'list'
     end
   end
-  resources :messages
-  get 'chats/load_chat', to: 'chats#load_chat'
-  resources :chats
+  resources :messages, only: [:create]
+
+  resources :chats, only: [:index] do
+    collection do
+      get 'load_chat'
+    end
+  end
 
   mount ActionCable.server, at: '/cable'
 

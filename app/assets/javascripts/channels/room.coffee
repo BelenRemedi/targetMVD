@@ -1,4 +1,4 @@
-App.room = App.cable.subscriptions.create "RoomChannel",
+App.room = App.cable.subscriptions.create "RoomChannel", #chat_id: 1,
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -6,26 +6,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    alert("You have a new mention") if data.mention
     if (data.message && !data.message.blank?)
-      $('#messages-table').append data.message
-      scroll_bottom()
-    # unless data.content.blank?
-    #   $('#messages-table').append '<div class="message">' +
-    #     '<div class="message-user">' + data.username + ":" + '</div>' +
-    #     '<div class="message-content">' + data.content + '</div>' + '</div>'
-
-
-# $(document).on 'turbolinks:load', ->
-#   submit_message()
-#   scroll_bottom()
-#
-# submit_message = () ->
-#   $('#message_body').on 'keydown', (event) ->
-#     if event.keyCode is 13
-#       $('.chat-submit').click()
-#       event.target.value = ""
-#       event.preventDefault()
-#
-# scroll_bottom = () ->
-#   $('#messages').scrollTop($('#messages')[0].scrollHeight)
+       $('#messages-table').append '<div class="message">' +
+         '<div class="message-user receiver-time">' + data.formattedTime + '</div>' +
+         '<div class="message-content receiver">' + data.message.body + '</div>' + '</div>'
+       scroll_bottom()

@@ -1,8 +1,8 @@
 <div class="message">
-  <div class="message-user">
-    <%= current_user.name %>:
+  <div class="message-user <%= current_user.id == message.user_id ? (' sender-time') : (' receiver-time')%>">
+    <%= message.created_at.in_time_zone(Time.zone).strftime("%I:%M %p") %>
   </div>
-  <div class="message-content">
+  <div class="message-content<%= current_user.id == message.user_id ? (' sender') : (' receiver')%>">
     <%= message.body %>
   </div>
 </div>
