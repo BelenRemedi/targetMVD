@@ -15,3 +15,5 @@ Topic.create(id: 6, name: 'Dating')
 Topic.create(id: 7, name: 'Movies')
 Topic.create(id: 8, name: 'Art')
 Topic.create(id: 9, name: 'Politics')
+
+Chat.create(receiver_id: 2, sender_id: 3, topic_id: 2)

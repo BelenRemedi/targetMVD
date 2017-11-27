@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :validatable, :confirmable
 
   has_many :targets
+  has_many :chats
 end

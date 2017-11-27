@@ -1,0 +1,30 @@
+$(document).ready(function(){
+  $(".chat-receiver").click(function(event) {
+    var chatId = $(this).data('chatId');
+    event.preventDefault();
+    $.getJSON('/chats/load_chat', { chat_id: chatId })
+      .done(function( data ) {
+        $('.rectangle').html(data.form);
+        $('#message_body').keydown(function(event) {
+           var messageText= $('#message_body').val();
+          if ( event.which == 13 ) {
+              $('.chat-submit').click();
+              event.target.value = "";
+              event.preventDefault();
+              var date= new Date().toLocaleTimeString().replace(/:\d{2}\s/,' ');
+
+              $('#messages-table').append ('<div class="message">' +
+                '<div class="message-user sender-time">' + date  + '</div>' +
+                '<div class="message-content sender">' +  messageText + '</div>' + '</div>');
+
+              scroll_bottom()
+          }
+        });
+        scroll_bottom()
+    })
+    .fail(function( jqxhr, textStatus, error ) {
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
+    });
+  });
+})

@@ -1,0 +1,8 @@
+class Message < ApplicationRecord
+  belongs_to :chat
+  belongs_to :user
+
+  def created_at_time
+    created_at.in_time_zone(Time.zone).strftime('%I:%M %p')
+  end
+end

@@ -1,0 +1,44 @@
+
+.message-user {
+  color: #666;
+  font-size: 13px;
+  display:inline;
+  line-height: 5;
+}
+
+.sender-time {
+  float: right;
+  margin-right:10%;
+  margin-left: 5%;
+}
+
+.receiver-time {
+  margin-left: 10%;
+  margin-right: 5%;
+}
+
+.message-content {
+  word-break: break-all;
+  text-align: left;
+  background: #F5F5F5;
+  border-radius: 25px;
+  display:inline;
+  float:right;
+  width: 55%;
+  padding: 3%;
+}
+
+.sender {
+  background: #f3d772;
+}
+
+.receiver {
+  background: #f7f7f7;
+  float:right;
+}
+
+.message {
+  margin-top: 10%;
+  width: 100%;
+  height: 60px;
+}

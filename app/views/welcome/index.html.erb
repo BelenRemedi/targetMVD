@@ -18,13 +18,11 @@
         <%= link_to('Logout', destroy_user_session_path, method: :'delete',:class => "logout-link") %>
       </div>
     </div>
-    <h2 class="second-title create-first-target">Create your first target by clicking wherever on the map.</h2>
-    <h3 class="third-title Psss-these-are-the">Psss!, these are the most popular targets:</h3>
-    <ul class= "list-topics">
-        <li> <%= image_tag '5', :class => "topic-image"%> Football</li>
-        <li> <%= image_tag '1', :class => "topic-image"%> Travel</li>
-        <li> <%= image_tag '7', :class => "topic-image"%> Music</li>
-    </ul>
+    <% if @chats.any? %>
+      <%= render 'chat', current_user: @current_user_id, chats: @chats %>
+    <% else %>
+      <%= render 'first_target' %>
+    <% end %>
     <%= image_tag 'smilies', :class => "smilies"%>
 </div>
 <div id="map"></div>

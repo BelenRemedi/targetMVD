@@ -1,0 +1,19 @@
+<table class= "chat-table">
+  <tr>
+    <th>
+      Chat
+    </th>
+  </tr>
+  <% chats.each do |chat| %>
+  <tr>
+    <td>
+      <span class="chat-receiver" data-chat-id=<%= chat.id %>>
+        <%= chat.receiver_id == current_user_id ? (chat.sender_name) : (chat.receiver_name)%>
+      </span>
+      <span class="chat-topic"
+        <i><%= image_tag("#{chat.topic_id}.png")  %></i>
+      </span>
+    </td>
+  </tr>
+  <% end %>
+</table>
