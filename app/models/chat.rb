@@ -3,7 +3,7 @@ class Chat < ApplicationRecord
   belongs_to :sender, class_name: 'User', foreign_key: :sender_id
   delegate :name, to: :sender, prefix: true
   delegate :name, to: :receiver, prefix: true
-  has_one :topic
+  belongs_to :topic
   has_many :messages
 
   def destinatary(current_user)
