@@ -285,7 +285,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
+  byebug (~> 9.1)
   capybara (~> 2.13)
   capybara-selenium
   chromedriver-helper
