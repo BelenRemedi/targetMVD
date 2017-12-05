@@ -26,4 +26,34 @@ RSpec.describe Target, type: :model do
         .to_not raise_error(ActiveRecord::RecordInvalid)
     end
   end
+
+  describe '#search_for_compatible_targets' do
+    let!(:first_user) { FactoryGirl.create :user }
+    let!(:second_user) { FactoryGirl.create :user }
+    let!(:topic) { FactoryGirl.create :topic }
+    let(:expected_params) do
+      { receiver_id: first_user.id, sender_id: second_user.id, topic_id: topic.id }
+    end
+
+    context 'when targets intersects' do
+      let!(:first_target) { FactoryGirl.create :target, topic: topic, user: first_user }
+      let!(:second_target) { FactoryGirl.create :target, topic: topic, user: second_user }
+      it 'create new chat' do
+        expect(Chat.where(expected_params)).to exist
+      end
+    end
+    context 'when targets does not intersects' do
+      let!(:first_target) { FactoryGirl.create :target, topic: topic, user: first_user }
+      let!(:third_target) do
+        FactoryGirl.create :target,
+                           topic: topic,
+                           user: second_user,
+                           latitud: -34.90895056115476,
+                           longitud: -56.21159076690674
+      end
+      it 'not create new chat' do
+        expect(Chat.where(expected_params)).not_to exist
+      end
+    end
+  end
 end

@@ -34,7 +34,6 @@ describe 'message', :js, :feature do
 
     it 'The message is received' do
       Capybara.using_session 'user2' do
-        save_and_open_page
         expect(page).to have_css('.chat-receiver')
         find('.chat-receiver').click
         expect(page).to have_css('div.message-content', text: 'hello')
