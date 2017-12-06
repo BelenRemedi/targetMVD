@@ -16,7 +16,7 @@ describe 'user', :js do
   it 'sign out' do
     login_as(user, scope: :user)
     visit root_path
-    click_link 'Logout'
+    find('.logout-link').click
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end
