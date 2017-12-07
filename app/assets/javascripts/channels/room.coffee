@@ -1,4 +1,4 @@
-App.room = App.cable.subscriptions.create "RoomChannel", #chat_id: 1,
+App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 

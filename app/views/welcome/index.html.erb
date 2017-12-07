@@ -4,25 +4,7 @@
 </script>
 <% end %>
 <div class= "rectangle">
-    <i class="fa fa-bars" style="fwidth: 20.3px; height: 13.5px; background-color: #000000;background-color: var(--black);"></i>
-    <% if flash[:notice] %>
-      <div class="alert alert-notice"><%= flash[:notice] %></div>
-    <% end %>
-    <div class= "rectangle-profile">
-      <h2 class="first-title position-auto">TARGET</h2>
-      <div class= "profile-logo">
-        <%= image_tag 'under-logo-img', :class => "under-logo-img"%>
-        <%= image_tag 'over-logo-img', :class => "over-logo-img"%>
-      </div>
-      <div class="link-div">
-        <%= link_to('Logout', destroy_user_session_path, method: :'delete',:class => "logout-link") %>
-      </div>
-    </div>
-    <% if @chats.any? %>
-      <%= render 'chat', current_user: @current_user_id, chats: @chats %>
-    <% else %>
-      <%= render 'first_target' %>
-    <% end %>
-    <%= image_tag 'smilies', :class => "smilies"%>
+  <%= render 'home', current_user_id: @current_user_id, chats: @chats%>
 </div>
+<%= render 'modal' %>
 <div id="map"></div>

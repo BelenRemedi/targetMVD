@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".chat-receiver").click(function(event) {
+  $( ".rectangle" ).on( "click", ".chat-receiver", function() {
     var chatId = $(this).data('chatId');
     event.preventDefault();
     $.getJSON('/chats/load_chat', { chat_id: chatId })
@@ -27,4 +27,5 @@ $(document).ready(function(){
       console.log( "Request Failed: " + err );
     });
   });
+
 })
