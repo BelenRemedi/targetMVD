@@ -13,7 +13,16 @@
 }
 
 .chat-topic {
-  margin-left: 228px;
+  position: relative;
+  height: 37px;
+  float: right;
+  display: table-cell;
+  width: 49px;
+}
+.chat-topic-img {
+  position: absolute;
+  top: 13px;
+  right: 10px;
 }
 
 .chat-table tr:hover {
@@ -27,4 +36,25 @@
 
 .messages-table {
   margin: 0 10% 0 10%;
+}
+
+.unread-msg-div {
+  border-radius: 7px;
+  width: 13px;
+  height: 13px;
+  background-color: #f3d772;
+  right: 1px;
+  position: absolute;
+}
+
+.display-none {
+    display: none;
+}
+
+.unread-msg-div p{
+  color: white;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  line-height: 14px;
 }

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index] do
     collection do
       get 'load_chats'
+      get 'update_chats'
     end
   end
 

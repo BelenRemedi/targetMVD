@@ -7,12 +7,18 @@
   <% chats.each do |chat| %>
   <tr>
     <td>
-      <span class="chat-receiver" data-chat-id=<%= chat.id %>>
+      <span class="chat-receiver" data-chat-id= "<%= chat.id %>">
         <%= chat.receiver_id == current_user_id ? (chat.sender_name) : (chat.receiver_name)%>
       </span>
-      <span class="chat-topic"
-        <i><%= image_tag("#{chat.topic_id}.png")  %></i>
-      </span>
+      <div class="chat-topic">
+        <i class= "chat-topic-img"><%= image_tag("#{chat.topic_id}.png") %></i>
+        <%= unread_messages_count(results, chat) %>
+        <div id= "chat-<%= chat.id %>" class= "unread-msg-div display-none" data-unread-count= "<%= results[chat.id] %>">
+          <p>
+            <%= results[chat.id] %>
+          </p>
+        </div>
+      </div>
     </td>
   </tr>
   <% end %>

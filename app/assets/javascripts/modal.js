@@ -1,8 +1,8 @@
 $(document).ready(function(){
-  $(".modal-button").click(function(event) {
+  $('.modal-button').click(function(event) {
     open_home_chat()
   });
-  $(".close").click(function(event) {
+  $('.close').click(function(event) {
     $('#modal').hide();
   });
 })
@@ -14,8 +14,5 @@ function open_home_chat() {
     .done(function( data ) {
       $('.rectangle').html(data.form);
   })
-  .fail(function( jqxhr, textStatus, error ) {
-    var err = textStatus + ", " + error;
-    console.log( "Request Failed: " + err );
-  });
+  .fail(errorHandling)
 }

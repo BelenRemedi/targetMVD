@@ -1,7 +1,7 @@
-<%if @target.errors.empty? %>
-  addCircles(<%=@target.area %>,"<%=image_url(@target.topic_id)%>",<%=@target.id%>);
-<%else%>
+<% if @target.errors.empty? %>
+  addCircles(<%= @target.area %>,"<%= image_url(@target.topic_id) %>",<%= @target.id %>);
+<% else %>
   <% @target.errors.each do |key, value| %>
-    $('.error-list').append('<li><%= "#{key} #{value}"%></li>')
-  <%end%>
-<%end%>
+    $('.error-list').append('<li><%= "#{key} #{value}" %></li>')
+  <% end %>
+<% end %>

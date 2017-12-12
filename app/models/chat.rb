@@ -11,6 +11,10 @@ class Chat < ApplicationRecord
     current_user.id == receiver_id ? sender_id : receiver_id
   end
 
+  def unread_messages(current_user)
+    messages.where.not(user_id: current_user.id).where(seen: false).count
+  end
+
   def match_notification
     ActionCable.server.broadcast "notification_channel_user_#{receiver_id}",
                                  user: User.find(receiver_id).name

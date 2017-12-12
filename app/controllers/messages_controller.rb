@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    message = Message.new(message_params.merge(user_id: current_user.id))
+    message = Message.new(message_params.merge(user_id: current_user.id, seen: false))
     if message.save
       destinatary = message.chat.destinatary(current_user)
       ActionCable.server.broadcast "room_channel_user_#{destinatary}",
@@ -12,6 +12,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :user_id, :chat_id)
+    params.require(:message).permit(:body, :user_id, :chat_id, :seen)
   end
 end
