@@ -1,5 +1,8 @@
-<h2 id="create-target">CREATE TARGET</h2>
-  <%= image_tag 'target-img', :class => "target-img"%>
+<div class= "rectangle-title">
+  <button class= "back-button"><%= image_tag 'back' %></button>
+  <h2 id="create-target"> CREATE TARGET</h2>
+</div>
+  <%= image_tag 'target-img', :class => "target-img" %>
   <h3 class="field text-centered">CREATE NEW TARGET</h3>
   <%= form_with class: "form-create-target", scope: :target, url: targets_path do |form| %>
     <div id="error_explanation">
@@ -9,15 +12,15 @@
     <%= form.hidden_field :latitud, {id: "latitude"} %>
     <%= form.hidden_field :longitud, {id: "longitude"} %>
     <p>
-      <%= form.label :specify_area_lenght,class: :field%><br>
+      <%= form.label :specify_area_lenght,class: :field %><br>
       <%= form.text_field :area %>
     </p>
     <p>
-      <%= form.label :target_title ,class: :field%><br>
+      <%= form.label :target_title ,class: :field %><br>
       <%= form.text_field :title %>
     </p>
     <p>
-      <%= form.label :select_a_topic ,class: :field%><br>
+      <%= form.label :select_a_topic ,class: :field %><br>
     </p>
     <table class= "create-target-table">
       <tr>
@@ -28,7 +31,7 @@
       <% topics.each do |topic| %>
       <tr>
         <td>
-          <span class="topic" data-topic-id=<%= topic.id %>>
+          <span class="topic" data-topic-id= "<%= topic.id %>">
             <i><%= image_tag("#{topic.id}.png")  %></i>
             <%= topic.name %>
           </span>
@@ -37,7 +40,7 @@
       <% end %>
     </table>
     <p>
-      <%= form.submit 'SAVE TARGET', class: :"button submit"%>
+      <%= form.submit 'SAVE TARGET', class: :"button submit" %>
     </p>
 <% end %>
-<%= image_tag 'smilies', :class => "smilies"%>
+<%= image_tag 'smilies', :class => "smilies" %>

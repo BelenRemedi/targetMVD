@@ -1,5 +1,10 @@
-<h2 id="create-target">CHAT</h2>
-<div class="message-wr">
-  <%= render 'messages', messages: messages %>
-  <%= render 'message_form', message: message, chat: chat %>
+<div id= "chat-rectangle" data-chat-id= "<%= chat.id %>">
+  <div class= "rectangle-title">
+    <button id= "back-button-chat" class= "back-button"> <%= image_tag 'back' %> </button>
+    <h2 id="create-target">CHAT</h2>
+  </div>
+  <div class="message-wr">
+    <%= render 'messages', messages: messages %>
+    <%= render 'message_form', message: message, chat: chat %>
+  </div>
 </div>

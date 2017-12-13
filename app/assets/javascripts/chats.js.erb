@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".chat-receiver").click(function(event) {
+  $( '.rectangle' ).on( 'click', '.chat-receiver', function() {
     var chatId = $(this).data('chatId');
     event.preventDefault();
     $.getJSON('/chats/load_chat', { chat_id: chatId })
@@ -9,7 +9,7 @@ $(document).ready(function(){
            var messageText= $('#message_body').val();
           if ( event.which == 13 ) {
               $('.chat-submit').click();
-              event.target.value = "";
+              event.target.value = '';
               event.preventDefault();
               var date= new Date().toLocaleTimeString().replace(/:\d{2}\s/,' ');
 
@@ -22,9 +22,7 @@ $(document).ready(function(){
         });
         scroll_bottom()
     })
-    .fail(function( jqxhr, textStatus, error ) {
-      var err = textStatus + ", " + error;
-      console.log( "Request Failed: " + err );
-    });
+    .fail(errorHandling)
   });
+
 })
