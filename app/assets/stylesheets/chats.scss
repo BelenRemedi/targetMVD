@@ -1,15 +1,28 @@
 @import "variables";
 .chat-table {
   width: 350px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 .chat-table th, .chat-table td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $table-accent-color;
 }
 
-.chat-receiver {
+.chat-table td:hover {
+  background-color: $chat-table-td-on-hover;
+}
+
+.chat-table th {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.9px;
+}
+
+.chat-table td {
   cursor: pointer;
+  font-weight: 600;
+  line-height: 1.74;
+  font-size: 11.5px;
 }
 
 .chat-topic {
@@ -19,14 +32,29 @@
   display: table-cell;
   width: 49px;
 }
+
+.chat-target-topic {
+  float: left;
+  margin: 10px 0px;
+}
+
+.chat-target-info {
+  display: inline-block;
+  margin: 10px 130px;
+  text-align: center;
+}
+
+.chat-target {
+  height: 50px;
+  margin: 0 auto;
+  width: 90%;
+  border-bottom: 0.5px   solid   gray;
+}
+
 .chat-topic-img {
   position: absolute;
   top: 13px;
   right: 10px;
-}
-
-.chat-table tr:hover {
-  background-color: $chat-table-tr-on-hover;
 }
 
 .messages {
@@ -42,7 +70,7 @@
   border-radius: 7px;
   width: 13px;
   height: 13px;
-  background-color: #f3d772;
+  background-color: $accent-color;
   right: 1px;
   position: absolute;
 }

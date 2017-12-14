@@ -3,12 +3,14 @@
   <div class="alert alert-notice"><%= flash[:notice] %></div>
 <% end %>
 <div class= "rectangle-profile">
-  <h2 class="first-title position-auto">TARGET</h2>
+  <h2 id= "target-home" class="first-title">TARGET</h2>
   <div class= "profile-logo">
     <%= image_tag 'under-logo-img', :class => "under-logo-img" %>
     <%= image_tag 'over-logo-img', :class => "over-logo-img" %>
   </div>
+  <div id= "profile-name" class="position-centered text-centered"> <%= current_user.name %> </div>
   <div class="link-div">
+    <%= link_to 'Edit' %> /
     <%= link_to('Logout', destroy_user_session_path, method: :'delete',:class => "logout-link") %>
   </div>
 </div>
@@ -19,4 +21,3 @@
 <% else %>
   <%= render 'first_target' %>
 <% end %>
-<%= image_tag 'smilies', :class => "smilies" %>

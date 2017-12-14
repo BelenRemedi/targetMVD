@@ -1,3 +1,4 @@
+@import "variables";
 .rectangle-menu-open {
     height: 100%;
     background-color: #ffffff;
@@ -11,7 +12,7 @@
   display: inline-block;
   height: 100%;
   width: 70%;
-  background-color: #30bcf8;
+  background-color: $brand-color;
 }
 
 .smilies-login {
@@ -62,7 +63,6 @@
 .login-link{
   font-size: 11px;
   letter-spacing: 0.7px;
-  color: #000000;
   text-decoration: none;
   text-align: center;
   display: block;

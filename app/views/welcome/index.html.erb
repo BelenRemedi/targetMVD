@@ -3,8 +3,13 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1aLc10D-T1IE1GoRDvzaqutJ0giRW_fI&callback=initMap">
 </script>
 <% end %>
-<div class= "rectangle">
-  <%= render 'home', current_user_id: @current_user_id, chats: @chats, results: @results %>
+<div class= "rectangle-wrapper">
+  <div class= "rectangle">
+    <%= render 'home', current_user_id: @current_user_id, chats: @chats, results: @results %>
+  </div>
+  <div class= "smilies-div">
+    <%= image_tag 'smilies', :class => "smilies" %>
+  </div>
 </div>
 <%= render 'modal' %>
 <div id="map"></div>

@@ -1,46 +1,51 @@
 <div class= "rectangle-title">
   <button class= "back-button"><%= image_tag 'back' %></button>
-  <h2 id="create-target"> CREATE TARGET</h2>
+  <h2 class= "first-title title-div"> CREATE TARGET</h2>
 </div>
   <%= image_tag 'target-img', :class => "target-img" %>
   <h3 class="field text-centered">CREATE NEW TARGET</h3>
-  <%= form_with class: "form-create-target", scope: :target, url: targets_path do |form| %>
-    <div id="error_explanation">
-      <ul class="error-list"></ul>
-    </div>
-    <%= form.hidden_field :topic_id, {id: "topic_id"} %>
-    <%= form.hidden_field :latitud, {id: "latitude"} %>
-    <%= form.hidden_field :longitud, {id: "longitude"} %>
-    <p>
-      <%= form.label :specify_area_lenght,class: :field %><br>
-      <%= form.text_field :area %>
-    </p>
-    <p>
-      <%= form.label :target_title ,class: :field %><br>
-      <%= form.text_field :title %>
-    </p>
-    <p>
-      <%= form.label :select_a_topic ,class: :field %><br>
-    </p>
-    <table class= "create-target-table">
-      <tr>
-        <th>
-          what do you want to talk about?
-        </th>
-      </tr>
-      <% topics.each do |topic| %>
-      <tr>
-        <td>
-          <span class="topic" data-topic-id= "<%= topic.id %>">
-            <i><%= image_tag("#{topic.id}.png")  %></i>
-            <%= topic.name %>
-          </span>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-    <p>
-      <%= form.submit 'SAVE TARGET', class: :"button submit" %>
-    </p>
-<% end %>
-<%= image_tag 'smilies', :class => "smilies" %>
+  <div class= "form-create-delete">
+    <%= form_with class: "form-create-target", scope: :target, url: targets_path do |form| %>
+      <div id="error_explanation">
+        <ul class="error-list"></ul>
+      </div>
+      <%= form.hidden_field :topic_id, {id: "topic_id"} %>
+      <%= form.hidden_field :latitud, {id: "latitude"} %>
+      <%= form.hidden_field :longitud, {id: "longitude"} %>
+      <div class="form-input">
+        <%= form.label :specify_area_length,class: :field%><br>
+        <%= form.select :area, {}, {}, {:class => 'area-select'} do %>
+          <% [['25 m', 25], ['50 m', 50], ['100 m', 100], ['150 m', 150], ['200 m', 200]].each do |c|-%>
+            <%= content_tag(:option, c.first, value: c.last) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="form-input">
+        <%= form.label :target_title ,class: :field %><br>
+        <%= form.text_field :title, placeholder: 'Choose a title for your target' %>
+      </div>
+      <div class="form-input">
+        <%= form.label :select_a_topic ,class: :field %><br>
+      </div>
+      <table class= "create-target-table">
+        <tr>
+          <th>
+            what do you want to talk about?
+          </th>
+        </tr>
+        <% topics.each do |topic| %>
+        <tr class="topic" data-topic-id= "<%= topic.id %>">
+          <td>
+            <span>
+              <i><%= image_tag("#{topic.id}.png")  %></i>
+              <%= topic.name %>
+            </span>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div>
+        <%= form.submit 'SAVE TARGET', class: :"button submit" %>
+      </div>
+  <% end %>
+</div>

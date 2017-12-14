@@ -1,31 +1,32 @@
 <div class= "rectangle-title">
   <button class= "back-button"><%= image_tag 'back' %></button>
-  <h2 id="create-target"> DELETE TARGET</h2>
+  <h2 class="first-title title-div"> DELETE TARGET</h2>
 </div>
-  <%= image_tag 'target-img', :class => 'target-img'%>
-  <h3 class="field text-centered">DELETE TARGET</h3>
-  <div class="delete-error"></div>
+<%= image_tag 'target-img', :class => 'target-img'%>
+<h3 class="field text-centered">DELETE TARGET</h3>
+<div class="delete-error"></div>
+<div class= "form-create-delete">
   <%= form_with class: "form-delete-target", scope: :target do |form| %>
-    <p>
-      <%= form.label :area_lenght,class: :field %><br>
-      <div class= "topic-field position-centered">
+    <div class= "form-input">
+      <%= form.label :area_length,class: :field %><br>
+      <div class= "topic-field">
         <%= target.area %>
       </div>
-    </p>
-    <p>
+    </div>
+    <div class= "form-input">
       <%= form.label :target_title ,class: :field %><br>
-      <div class= "topic-field position-centered">
+      <div class= "topic-field">
         <%= target.title %>
       </div>
-    </p>
-    <p>
+    </div>
+    <div class= "form-input">
       <%= form.label :target_topic ,class: :field %><br>
-      <div class= "topic-field position-centered">
+      <div class= "topic-field">
         <%= target.topic_name %>
       </div>
-    </p>
-    <p>
-    <%= link_to 'Delete', target_path(target), method: :delete, remote:true %>
-    </p>
-<% end %>
-<%= image_tag 'smilies', :class => "smilies" %>
+    </div>
+    <div class= "button-delete submit">
+      <%= link_to 'Delete', target_path(target), method: :delete, remote: true, data: { confirm: "Are you sure you want to delete this target?" } %>
+    </div>
+  <% end %>
+</div>
