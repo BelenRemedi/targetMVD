@@ -12,8 +12,12 @@
     <%= form.hidden_field :latitud, {id: "latitude"} %>
     <%= form.hidden_field :longitud, {id: "longitude"} %>
     <p>
-      <%= form.label :specify_area_lenght,class: :field %><br>
-      <%= form.text_field :area %>
+      <%= form.label :specify_area_lenght,class: :field%><br>
+      <%= form.select :area, {}, {}, {:class => 'area-select'} do %>
+        <% [['25', 25], ['50', 50], ['100', 100], ['150', 150], ['200', 200]].each do |c|-%>
+          <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
+      <% end %>
     </p>
     <p>
       <%= form.label :target_title ,class: :field %><br>

@@ -24,8 +24,8 @@
         <%= target.topic_name %>
       </div>
     </p>
-    <p>
-    <%= link_to 'Delete', target_path(target), method: :delete, remote:true %>
+    <p class= "delete-link">
+    <%= link_to 'Delete', target_path(target), method: :delete, remote: true, data: { confirm: "Are you sure you want to delete this target?" } %>
     </p>
 <% end %>
 <%= image_tag 'smilies', :class => "smilies" %>
