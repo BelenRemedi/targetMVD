@@ -1,0 +1,5 @@
+<div class= "unread-msg-div-chat <%= 'display-none' if Message.unread_global_messages(current_user) == 0 %>" data-unread-count= "<%= Message.unread_global_messages(current_user) %>">
+  <p class= "unread-msg-div-content">
+    <%= Message.unread_global_messages(current_user) %>
+  </p>
+</div>

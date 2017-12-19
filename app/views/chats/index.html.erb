@@ -2,6 +2,7 @@
   <div class= "rectangle-title">
     <button id= "back-button-chat" class= "back-button"> <%= image_tag 'back' %> </button>
     <h2 class="first-title title-div">CHAT</h2>
+    <%= render 'welcome/unread_global_msg', current_user: current_user %>
   </div>
   <div class= "chat-target">
     <div class= "chat-target-topic">
