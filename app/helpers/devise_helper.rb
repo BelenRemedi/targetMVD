@@ -11,11 +11,10 @@ module DeviseHelper
     if !flash.empty?
       flash_alerts.push(flash[:error]) if flash[:error]
       flash_alerts.push(flash[:alert]) if flash[:alert]
-      flash_alerts.push(flash[:notice]) if flash[:notice]
       error_key = 'devise.failure.invalid'
     end
 
-   return '' if resource.errors.empty? && flash_alerts.empty?
+   return '' if resource.errors.empty? && flash_alerts.empty? && !flash[:notice]
    errors = resource.errors.empty? ? flash_alerts : resource.errors.full_messages
 
     messages = errors.map { |msg| content_tag(:li, msg) }.join
@@ -29,6 +28,14 @@ module DeviseHelper
       <ul class= error-list>#{messages}</ul>
     </div>
     HTML
+
+    if flash[:notice]
+      html =+ <<-HTML
+      <div class="notice">
+        <h2>#{flash[:notice]}</h2>
+      </div>
+      HTML
+    end
 
     html.html_safe
   end

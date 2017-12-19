@@ -1,5 +1,6 @@
 @import "variables";
-.rectangle {
+.rectangle-wrapper {
+  position: relative;
   height: 100%;
   width: 375px;
   background-color: #ffffff;
@@ -8,13 +9,19 @@
   margin: 0 auto;
 }
 
+.rectangle {
+  height: 92%;
+}
+
 .rectangle-title {
-  background-color: #2fbcf7;
+  height: 6%;
+  background-color: $brand-color;
 }
 
 .back-button {
+  margin-top: 10px;
   float:left;
-  background-color: #2fbcf7;
+  background-color: $brand-color;
   border: none;
 }
 
@@ -27,7 +34,27 @@
 }
 
 .profile-logo{
-  height: 164px;
+  height: 144px;
+}
+
+.link-div {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+}
+
+.link-div a:hover{
+  color: $brand-color;
+}
+
+#profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.86;
+}
+
+#target-home {
+  margin-bottom: 10px;
 }
 
 .over-logo-img {
@@ -48,32 +75,47 @@
 }
 
 .topic-image {
+  margin-right: 10px;
   width: 20.1px;
   height: 19.5px;
   object-fit: contain;
   display: inline-block;
 }
-.list-topics li {
-  padding-left: 100px;
-  margin-top: 10px;
+
+.topic-list li {
+  margin-top: 15px;
+}
+
+.table-topic-list {
+  font-size: 13px;
+  letter-spacing: 2px;
+  display: table;
+  margin: 0 auto;
+}
+
+.topic-list {
+  list-style-type: none;
 }
 
 .create-first-target {
+  margin: 72px auto 80px auto;
   text-align: center;
-  margin-top: 72px;
-  margin-bottom: 80px
 }
 
 .Psss-these-are-the {
+  margin:0px auto 58px auto;
   text-align: center;
-  margin-bottom: 58px;
+}
+
+.not-matches {
+  margin-top: 45%;
 }
 
 .alert {
   margin: 0 auto;
-  color: $color-alert ;
+  color: $alert-color ;
   font-size: 15px;
-  background-color: $color-alert-background;
+  background-color: $alert-background-color;
   border-color: black;
   border-radius: 10px;
 }

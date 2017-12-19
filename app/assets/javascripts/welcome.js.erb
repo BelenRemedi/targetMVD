@@ -36,6 +36,8 @@ function initMap() {
       $('#latitude').val(event.latLng.lat());
       $('#longitude').val(event.latLng.lng());
       $('.topic').click(function() {
+        $('.create-target-table tr').removeClass("active");
+        $(this).addClass("active");
         $('#topic_id').val( $(this).data('topicId'));
       });
     });

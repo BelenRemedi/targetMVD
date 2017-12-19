@@ -1,48 +1,83 @@
-// Place all the styles related to the Targets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-#create-target {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  color: #ffffff;
-  text-align: center;
-  background-color: #2fbcf7;
+@import "variables";
+
+.form-create-delete {
+  display: flex;
+  justify-content: center;
 }
 
-.form-create-target{
-  margin: 20px 30px auto 30px;
-  display: inline-block;
+.form-create-target {
+  width: 70%;
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+
+  .form-input input {
+    border: 0.5px solid black;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    width: 100%;
+  }
 }
 
+.form-input {
+  width: 100%;
+  margin: 5px auto;
+}
+
+.area-select {
+  border: .5px solid black;
+  background-color: white;
+  height: 38px;
+  width: 100%;
+}
+
+.create-target-table {
+  width: 100%;
+}
 .create-target-table , .create-target-table td{
   border: 1px solid black;
   border-collapse: collapse;
 }
-
-.button {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    font-size: 16px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-    margin-left: 28px;
-    margin-top: 10px;
+.create-target-table td, th {
+  padding: 5px;
+}
+.create-target-table th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
 }
 
-.target-img{
-  display: block;
-  margin: 0 auto 0 auto;
+.create-target-table td {
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.create-target-table tr:hover {
+  background-color: $shadow-color;
+}
+
+.active {
+  background-color: $table-accent-color;
 }
 
 .topic {
   cursor: pointer;
 }
 
-.topic:hover {
-  background-color: grey;
+.button {
+  margin: 10px 50px 0px 50px;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.target-img{
+  display: block;
+  margin: 10px auto 10px auto;
 }

@@ -14,10 +14,6 @@ module Users
     # end
 
     # POST /resource
-    def create
-      super
-      cookies[:user_id] = current_user.id
-    end
 
     # GET /resource/edit
     # def edit
@@ -30,10 +26,6 @@ module Users
     # end
 
     # DELETE /resource
-    def destroy
-      super
-      cookies.delete :user_id
-    end
 
     # GET /resource/cancel
     # Forces the session data which is usually expired after sign

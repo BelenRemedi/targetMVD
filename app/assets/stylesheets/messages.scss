@@ -1,6 +1,7 @@
+@import "variables";
 
 .message-user {
-  color: #666;
+  color: $time-color;
   font-size: 13px;
   display:inline;
   line-height: 5;
@@ -20,7 +21,6 @@
 .message-content {
   word-break: break-all;
   text-align: left;
-  background: #F5F5F5;
   border-radius: 25px;
   display:inline;
   float:right;
@@ -29,11 +29,11 @@
 }
 
 .sender {
-  background: #f3d772;
+  background: $accent-color;
 }
 
 .receiver {
-  background: #f7f7f7;
+  background: $shadow-color;
   float:right;
 }
 
