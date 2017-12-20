@@ -5,16 +5,15 @@
     </th>
   </tr>
   <% chats.each do |chat| %>
-  <tr class="chat-receiver" data-chat-id= "<%= chat.id %>">
+  <tr id="chat-receiver-<%= chat.id %>" class= "chat-receiver" data-chat-id= "<%= chat.id %>">
     <td>
       <span>
         <%= chat.receiver_id == current_user_id ? (chat.sender_name) : (chat.receiver_name)%>
       </span>
       <div class="chat-topic">
         <i class= "chat-topic-img"><%= image_tag("#{chat.topic_id}.png") %></i>
-        <%= unread_messages_count(results, chat) %>
-        <div id= "chat-<%= chat.id %>" class= "unread-msg-div display-none" data-unread-count= "<%= results[chat.id] %>">
-          <p>
+        <div id= "chat-<%= chat.id %>" class= "unread-msg-div <%= 'display-none' if results[chat.id] == 0 %>" data-unread-count= "<%= results[chat.id] %>">
+          <p class= "unread-msg-div-content">
             <%= results[chat.id] %>
           </p>
         </div>

@@ -1,6 +1,7 @@
 <div class= "rectangle-title">
   <button class= "back-button"><%= image_tag 'back' %></button>
   <h2 class= "first-title title-div"> CREATE TARGET</h2>
+  <%= render 'welcome/unread_global_msg', current_user: current_user %>
 </div>
   <%= image_tag 'target-img', :class => "target-img" %>
   <h3 class="field text-centered">CREATE NEW TARGET</h3>
