@@ -31,12 +31,12 @@
       <% end %>
     </div>
     <div id="recovery-box">
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { id: "form-recovery", method: :post }) do |f| %>
         <%= devise_error_messages! %>
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: :"field-position"%>
+          <%= f.email_field :email, autofocus: true, class: :"field-position", id: "recovery-user-email"%>
         </div>
 
         <div class="actions">
