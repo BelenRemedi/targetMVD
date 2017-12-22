@@ -10,7 +10,7 @@
   </div>
   <div id= "profile-name" class="position-centered text-centered"> <%= current_user.name %> </div>
   <div class="link-div">
-    <%= link_to 'Edit' %> /
+    <%= link_to 'Edit', edit_user_registration_path, remote: true %> /
     <%= link_to('Logout', destroy_user_session_path, method: :'delete',:class => "logout-link") %>
   </div>
 </div>

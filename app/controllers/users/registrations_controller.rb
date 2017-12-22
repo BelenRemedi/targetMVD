@@ -16,9 +16,13 @@ module Users
     # POST /resource
 
     # GET /resource/edit
-    # def edit
-    #   super
-    # end
+     def edit
+       #super
+       puts "hello_______"
+       respond_to do |format|
+           format.js
+       end
+     end
 
     # PUT /resource
     # def update
