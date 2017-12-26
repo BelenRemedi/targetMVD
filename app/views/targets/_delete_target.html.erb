@@ -5,7 +5,7 @@
 </div>
 <%= image_tag 'target-img', :class => 'target-img'%>
 <h3 class="field text-centered">DELETE TARGET</h3>
-<div class="delete-error"></div>
+<div id= "delete-error" class="error-div"></div>
 <div class= "form-create-delete">
   <%= form_with class: "form-delete-target", scope: :target do |form| %>
     <div class= "form-input">
