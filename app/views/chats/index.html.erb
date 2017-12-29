@@ -9,7 +9,7 @@
       <%= image_tag "#{chat.topic_id}.png" %>
     </div>
     <div class= "chat-target-info">
-      <%= chat.receiver_id == current_user.id ? (chat.sender_name) : (chat.receiver_name)%>
+      <p><%= chat.receiver_id == current_user.id ? (chat.sender_name) : (chat.receiver_name)%></p>
     </div>
   </div>
   <div class="message-wr">

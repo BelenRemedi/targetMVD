@@ -1,61 +1,38 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    # before_action :configure_sign_up_params, only: [:create]
-    # before_action :configure_account_update_params, only: [:update]
 
     def confirmation_page; end
 
     def after_inactive_sign_up_path_for(_resource)
       '/users/registrations/confirmation_page' # Or :prefix_to_your_route
     end
-    # GET /resource/sign_up
-    # def new
-    #   super
-    # end
-
-    # POST /resource
 
     # GET /resource/edit
-    # def edit
-    #   super
-    # end
+     def edit
+       respond_to do |format|
+         format.js
+       end
+     end
 
     # PUT /resource
-    # def update
-    #   super
-    # end
 
-    # DELETE /resource
+     def update
+       if current_user.update_attributes(account_update_params)
+         if is_flashing_format?
+           flash_key = update_needs_confirmation?(current_user, current_user.unconfirmed_email) ?
+           :update_needs_confirmation : :updated
+           set_flash_message :notice, flash_key
+         end
+         bypass_sign_in current_user, scope: resource_name
+         respond_with current_user, location: after_update_path_for(current_user)
+       else
+         clean_up_passwords current_user
+         set_minimum_password_length
+         respond_to do |format|
+           format.js { render :'edit.js.erb' }
+         end
+       end
+     end
 
-    # GET /resource/cancel
-    # Forces the session data which is usually expired after sign
-    # in to be expired now. This is useful if the user wants to
-    # cancel oauth signing in/up in the middle of the process,
-    # removing all OAuth session data.
-    # def cancel
-    #   super
-    # end
-
-    # protected
-
-    # If you have extra params to permit, append them to the sanitizer.
-    # def configure_sign_up_params
-    #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    # end
-
-    # If you have extra params to permit, append them to the sanitizer.
-    # def configure_account_update_params
-    #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-    # end
-
-    # The path used after sign up.
-    # def after_sign_up_path_for(resource)
-    #   super(resource)
-    # end
-
-    # The path used after sign up for inactive accounts.
-    # def after_inactive_sign_up_path_for(resource)
-    #   super(resource)
-    # end
   end
 end

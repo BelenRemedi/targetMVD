@@ -34,7 +34,7 @@
 }
 
 .form-login {
-  margin: 80px auto;
+  margin: 80px auto 30px auto;
   width: 50%;
 }
 
@@ -57,7 +57,9 @@
 }
 
 .link-login-div {
- margin: 80px auto;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 0 auto;
 }
 
 .login-link{
@@ -68,7 +70,12 @@
   display: block;
 }
 
+.sign-up-link {
+  padding-top: 16%;
+}
+
 #facebook-link {
+  margin-top: 8%;
   text-align: center;
   display: block;
   letter-spacing: 2.4px;
@@ -79,4 +86,22 @@
 
 #recovery-box{
   display: none;
+  margin: 20% 20%;
+}
+
+.form-change-password {
+  width: 70%;
+  margin: 0 0 15% 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-header {
+  margin: 15% 0;
+}
+
+.sign-up-rectangle {
+  margin: 0 auto;
+  width: 26%;
+  border-top: 0.5px   solid   black;
 }
